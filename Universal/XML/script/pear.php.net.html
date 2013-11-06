@@ -1,0 +1,176 @@
+<html>
+<head>
+ <title>PEAR :: The PHP Extension and Application Repository</title>
+ <link rel="shortcut icon" href="/gifs/favicon.ico" />
+ <link rel="stylesheet" href="/style.css" />
+ <link rel="alternate" type="application/rss+xml" title="RSS feed" href="http://pear.php.net/feeds/latest.rss" />
+</head>
+
+<body         bgcolor="#ffffff"
+        text="#000000"
+        link="#006600"
+        alink="#cccc00"
+        vlink="#003300"
+><a name="TOP" />
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+  <tr bgcolor="#339900">
+    <td align="left" rowspan="2" width="120" colspan="2" height="1">
+<a href="/"><img src="/gifs/pearsmall.gif" border="0" width="104" height="50" alt="PEAR"  vspace="5" hspace="5" /></a><br />
+    </td>
+    <td align="right" valign="top" colspan="3" height="1">&nbsp;</td>
+  </tr>
+
+  <tr bgcolor="#339900">
+    <td align="right" valign="bottom" colspan="3" height="1">
+      <a href="/account-request.php" class="menuBlack">Register</a>&nbsp;|&nbsp;<a href="/login.php?redirect=/index.php" class="menuBlack">Login</a>&nbsp;|&nbsp;<a href="/manual/" class="menuBlack">Docs</a>&nbsp;|&nbsp;<a href="/packages.php" class="menuBlack">Packages</a>&nbsp;|&nbsp;<a href="/support.php" class="menuBlack">Support</a>&nbsp;|&nbsp;<a href="/bugs/" class="menuBlack">Bugs</a>&nbsp;<br />
+      <img src="/gifs/spacer.gif" width="2" height="2" border="0" alt=""  /><br />
+    </td>
+  </tr>
+
+  <tr bgcolor="#003300"><td colspan="5" height="1"><img src="/gifs/spacer.gif" width="1" height="1" border="0" alt=""  /><br /></td></tr>
+
+  <tr bgcolor="#006600">
+    <td align="right" valign="top" colspan="5" height="1" class="menuWhite">
+    <form method="post" action="/search.php">
+    <small>Search for</small>
+    <input class="small" type="text" name="search_string" value="" size="20" />
+    <small>in the</small>
+    <select name="search_in" class="small">
+	<option value="packages">Packages</option>
+	<option value="site">This site (using Google)</option>
+    <option value="pear-dev">Developer mailing list</option>
+    <option value="pear-general">General mailing list</option>
+    <option value="pear-cvs">CVS commits mailing list</option>
+    </select>
+    <input type="image" src="/gifs/small_submit_white.gif" alt="search" align="bottom" />&nbsp;<br /></form></td></tr>
+
+  <tr bgcolor="#003300"><td colspan="5" height="1"><img src="/gifs/spacer.gif" width="1" height="1" border="0" alt=""  /><br /></td></tr>
+
+  <!-- Middle section -->
+
+ <tr valign="top">
+  <td colspan="2" class="sidebar_left" bgcolor="#f0f0f0" width="149">
+   <table width="149" cellpadding="4" cellspacing="0">
+    <tr valign="top">
+     <td><br />
+<img src="/gifs/box-1.gif" border="0" width="11" height="7" alt=""  /><b>Home</b><br />
+<img src="/gifs/box-0.gif" border="0" width="11" height="7" alt=""  /><a href="/news/">News</a><br />
+<br />
+<b>Documentation:</b>
+<br />
+<img src="/gifs/box-0.gif" border="0" width="11" height="7" alt=""  /><a href="/manual/en/about-pear.php">About&nbsp;PEAR</a><br />
+<img src="/gifs/box-0.gif" border="0" width="11" height="7" alt=""  /><a href="/manual/index.php">Manual</a><br />
+<img src="/gifs/box-0.gif" border="0" width="11" height="7" alt=""  /><a href="/manual/en/faq.php">FAQ</a><br />
+<img src="/gifs/box-0.gif" border="0" width="11" height="7" alt=""  /><a href="/support.php">Support</a><br />
+<img src="/gifs/box-0.gif" border="0" width="11" height="7" alt=""  /><a href="/group/">The&nbsp;PEAR&nbsp;Group</a><br />
+<br />
+<b>Downloads:</b>
+<br />
+<img src="/gifs/box-0.gif" border="0" width="11" height="7" alt=""  /><a href="/packages.php">List&nbsp;Packages</a><br />
+<img src="/gifs/box-0.gif" border="0" width="11" height="7" alt=""  /><a href="/package-search.php">Search&nbsp;Packages</a><br />
+<img src="/gifs/box-0.gif" border="0" width="11" height="7" alt=""  /><a href="/package-stats.php">Statistics</a><br />
+<br />
+<b>Package Proposals:</b>
+<br />
+<img src="/gifs/box-0.gif" border="0" width="11" height="7" alt=""  /><a href="/pepr/pepr-overview.php">Browse&nbsp;proposals</a><br />
+<img src="/gifs/box-0.gif" border="0" width="11" height="7" alt=""  /><a href="/pepr/pepr-proposal-edit.php">New&nbsp;proposal</a><br />
+<br /></td>
+    </tr>
+   </table>
+  </td>
+  <td>
+   <table width="100%" cellpadding="10" cellspacing="0">
+    <tr>
+     <td valign="top">
+
+<h1>PEAR - PHP Extension and Application Repository</h1>
+
+<p><acronym title="PHP Extension and Application Repository">PEAR</acronym>
+is a framework and distribution system for reusable PHP
+components. More <b>information</b> about PEAR can be found in the
+<a href="/manual/en/">online manual</a> and the
+<a href="/manual/en/faq.php">FAQ</a>.</p>
+
+<p>If you are a first time user, you might be especially interested in
+the manual chapter &quot;<a href="/manual/en/about-pear.php">About PEAR</a>&quot;.</p>
+
+<p>Recent <b>news</b> about PEAR can be found <a href="/news/">here</a>.</p>
+
+<p>PEAR provides the above mentioned PHP components in the form of so
+called &quot;Packages&quot;. If you would like to <b>download</b> PEAR
+packages, you can <a href="/packages.php">browse the complete list</a>
+here.  Alternatively you  can  search for packages by some keywords
+using the search box above. Apart from simply downloading a package,
+PEAR also provides a command-line interface that can be used to
+automatically <b>install</b> packages. The manual <a href="/manual/en/installation.cli.php">
+describes this procedure</a> in detail.</p>
+
+<p>In case you need <b>support</b> for PEAR in general or a package
+in special, we have compiled a list of the <a href="/support.php">available
+support resources</a>.</p>
+
+<hr />
+<p>If you have been told by other PEAR developers to sign up for a
+PEAR website account, you can use <a href="/account-request.php">
+this interface</a>.</p>
+
+     </td>
+    </tr>
+   </table>
+  </td>
+
+  <td class="sidebar_right" width="149" bgcolor="#f0f0f0">
+    <table width="149" cellpadding="4" cellspacing="0">
+     <tr valign="top">
+      <td><h3>Recent Releases</h3>
+<table><tr><td valign="top" class="compact"><a href="/package/Image_Text/">Image_Text 0.5.1beta</a><br /><i>2004-04-18:</i> * Fixed bug #1207 supporting old version...</td></tr><tr><td valign="top" class="compact"><a href="/package/HTML_Progress/">HTML_Progress 1.2.0RC1</a><br /><i>2004-04-18:</i> * TODO
+- this 1st RC is still marked as ...</td></tr><tr><td valign="top" class="compact"><a href="/package/XML_Parser/">XML_Parser 1.1.0beta2</a><br /><i>2004-04-17:</i> beta2:
+- Fixed calling of __construct
+
+b...</td></tr><tr><td valign="top" class="compact"><a href="/package/XML_Parser/">XML_Parser 1.1.0beta1</a><br /><i>2004-04-17:</i> - Fixed memory leaks parsing many docume...</td></tr><tr><td valign="top" class="compact"><a href="/package/Image_Color/">Image_Color 1.0.0</a><br /><i>2004-04-17:</i> + Added color2RGB() method.
+
+  (Contribu...</td></tr><tr><td>&nbsp;</td></tr>
+<tr><td width="100%" align="right"><a href="/feeds/">Syndicate this</a></td></tr>
+</table>
+<br />
+     </td>
+    </tr>
+   </table>
+  </td>
+
+ </tr>
+
+ <!-- Lower bar -->
+
+  <tr bgcolor="#003300"><td colspan="5" height="1"><img src="/gifs/spacer.gif" width="1" height="1" border="0" alt=""  /><br /></td></tr>
+  <tr bgcolor="#339900">
+      <td align="right" valign="bottom" colspan="5" height="1">
+<a href="/about/privacy.php" class="menuBlack">PRIVACY POLICY</a>&nbsp;|&nbsp;<a href="/credits.php" class="menuBlack">CREDITS</a>      <br />
+      </td>
+  </tr>
+  <tr bgcolor="#003300"><td colspan="5" height="1"><img src="/gifs/spacer.gif" width="1" height="1" border="0" alt=""  /><br /></td></tr>
+
+  <tr valign="top" bgcolor="#cccccc">
+    <td colspan="5" height="1">
+	  <table border="0" cellspacing="0" cellpadding="5" width="100%">
+	  	<tr>
+		 <td>
+		  <small>
+	      <a href="/copyright.php">Copyright &copy; 2001-2004 The PHP Group</a><br />
+	      All rights reserved.<br />
+	      </small>
+		 </td>
+		 <td align="right" valign="top">
+		  <small>
+	      Last updated: Fri Apr 09 09:04:31 2004 EDT<br />
+	      Bandwidth and hardware provided by: <a href="http://www.pair.com/">pair Networks</a>	      </small>
+		 </td>
+		</tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>
+

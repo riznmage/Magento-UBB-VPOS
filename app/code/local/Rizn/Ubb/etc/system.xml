@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<config>
+  <sections>
+    <payment>
+      <groups>
+        <ubb translate="label comment" module="paygate">
+          <label>UBB Virtual POS Terminal (powered by RIZN)</label>
+          <frontend_type>text</frontend_type>
+          <sort_order>1</sort_order>
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>1</show_in_store>
+          <comment><![CDATA[<table class='form-list'><tr><td style='width:200px;'><img src='http://www.rizn.bg/obb-vpos-magento-rizn.jpg' /></td><td style='width:630px;'><h3 style='color:#EA7601'>UBB Virtual POS Terminal (powered by RIZN)</h3><h6 style='color:#EA7601; border-top: 1px dotted #EA7601; border-bottom: 1px dotted #EA7601; margin-bottom: 10px; margin-top: -5px;'>v1.1.1</h6><p>You can learn more about the module here: <a href='http://www.rizn.bg/blog/ubb-magento-vpos/' target='_blank'>http://www.rizn.bg/blog/ubb-magento-vpos/</a></p><p>The purpose of this text is to inform you that this Magento extension is distributed for free and will always be. The extension has been created in order to help Bulgarian developers to integrate bank-card and credit-card payment via a virtual POS terminal from United Bulgarian Bank (UBB). The extension is created by the <a href='http://www.rizn.bg' target='_blank'>RIZN Web Design Studio</a>'s team, without any attendance of the bank. If you have any problems or you need help, you can contact us on our email at: <a href='mailto:info@rizn.bg'>info@rizn.bg</a> or by phone: <strong>0878888791</storng>.</p></td></tr></table>]]></comment>
+          <fields>
+            <active translate="label">
+              <label>Enabled</label>
+              <frontend_type>select</frontend_type>
+              <source_model>adminhtml/system_config_source_yesno</source_model>
+              <sort_order>10</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>0</show_in_store>
+            </active>
+            <title translate="label">
+              <label>Title on checkout</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>20</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </title>
+            <logo translate="label">
+              <label>Merchant Logo (URL)</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>30</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </logo>
+            <merchant_name translate="label">
+              <label>Merchant Name</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>35</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </merchant_name>
+            <internet_address translate="label">
+              <label>Internet Address</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>40</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </internet_address>
+            <order_status translate="label">
+              <label>New Order Status</label>
+              <frontend_type>select</frontend_type>
+              <source_model>adminhtml/system_config_source_order_status</source_model>
+              <sort_order>50</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>0</show_in_store>
+            </order_status>
+            <allowspecific translate="label">
+              <label>Payment Applicable From</label>
+              <frontend_type>select</frontend_type>
+              <sort_order>61</sort_order>
+              <source_model>adminhtml/system_config_source_payment_allspecificcountries</source_model>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>0</show_in_store>
+            </allowspecific>
+            <specificcountry translate="label">
+              <label>Countries Payment Applicable From</label>
+              <frontend_type>multiselect</frontend_type>
+              <sort_order>70</sort_order>
+              <source_model>adminhtml/system_config_source_country</source_model>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>0</show_in_store>
+              <depends>
+                <allowspecific>1</allowspecific>
+              </depends>
+            </specificcountry>
+            <sort_order translate="label">
+              <label>Sort Order</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>100</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>0</show_in_store>
+            </sort_order>
+          </fields>
+        </ubb>
+      </groups>
+    </payment>
+  </sections>
+</config>

@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- CSSML -->
+<!-- Example Browser codes are as follows
+  Mozilla/Netscape 6 -> gecko
+  Internet Explorer  -> ie 
+  Netscape 4         -> ns4
+-->
+<cssml:CSSML xmlns:cssml="http://pear.php.net/cssml/1.0">
+  <style filterInclude="frontend admin">
+    <selector>body</selector>
+    <declaration property="color">{f_commonTextColor}</declaration>
+    <declaration property="background-color">{f_backgroundColor}</declaration>
+    <declaration property="font-size">{f_fontSize}</declaration>
+    <declaration property="font-family">{f_fontFamily}</declaration>
+    <declaration property="background-image">{f_backgroundImage}</declaration>
+    <declaration property="background-attachment">scroll</declaration>
+    <declaration property="margin">10px 10px 40px 10px</declaration>
+  </style>
+  <style filterInclude="frontend">
+    <selector class="nav">body</selector>
+    <declaration property="background-color">{f_menuBGColor}</declaration>
+    <declaration property="background-image">none</declaration>
+  </style>
+  <style browserInclude="ns4" filterInclude="frontend admin">
+    <!-- 
+        This style here will cascade into all div elements, carrying the font family and size...
+        BUT, just for ns4...this trick should work for all div elements, so it replaces the need 
+        of adding it redundantly
+      -->
+    <selector>div</selector>
+    <declaration property="font-family">{f_fontFamily}</declaration>
+    <declaration property="font-size">{f_fontSize}</declaration>
+  </style>
+  <style filterInclude="frontend admin">
+    <selector>h1</selector>
+    <declaration property="font-size">{f_h1fontSize}</declaration>
+    <declaration property="font-family">{f_fontFamily}</declaration>
+    <declaration property="color">{f_commonTextColor}</declaration>
+  </style>
+  <style filterInclude="frontend admin">
+    <selector>h2</selector>
+    <declaration property="font-size">{f_h2fontSize}</declaration>
+    <declaration property="font-family">{f_fontFamily}</declaration>
+    <declaration property="color">{f_commonTextColor}</declaration>
+  </style>
+  <style filterInclude="frontend admin">
+    <selector>h3</selector>
+    <declaration property="font-size">{f_h3fontSize}</declaration>
+    <declaration property="font-family">{f_fontFamily}</declaration>
+    <declaration property="color">{f_commonTextColor}</declaration>
+  </style>
+  <style filterInclude="frontend admin">
+    <selector>p</selector>
+    <declaration property="font-family">{f_fontFamily}</declaration>
+    <declaration property="color">{f_commonTextColor}</declaration>
+  </style>
+  <style filterInclude="frontend admin">
+    <selector pseudoclass="link">a</selector>
+    <declaration property="color">{f_linkColor}</declaration>
+    <declaration property="text-decoration">{f_linkDecoration}</declaration>
+    <declaration property="cursor" browserInclude="ie">hand</declaration>
+    <declaration property="cursor" browserInclude="not(ie)">pointer</declaration>
+  </style>
+  <style filterInclude="frontend admin">
+    <selector pseudoclass="visited">a</selector>
+    <declaration property="color">{f_linkVisitedColor}</declaration>
+    <declaration property="text-decoration">{f_linkDecoration}</declaration>
+  </style>
+  <style filterInclude="frontend admin">
+    <selector pseudoclass="active">a</selector>
+    <declaration property="color">{f_linkActiveColor}</declaration>
+    <declaration property="text-decoration">{f_linkDecoration}</declaration>
+  </style>
+  <style browserInclude="not(ns4)" filterInclude="frontend admin">
+    <selector pseudoclass="hover">a</selector>
+    <declaration property="color">{f_linkHoverColor}</declaration>
+    <declaration property="text-decoration">{f_linkHoverDecoration}</declaration>
+  </style>
+  <style browserExclude="not(gecko)" filterInclude="frontend admin">
+    <selector pseudoclass="focus">a</selector>
+    <declaration property="-moz-outline">0</declaration>
+  </style>
+  <style filterInclude="frontend">
+    <selector class="navlink" pseudoclass="link">a</selector>
+    <declaration property="color">{f_menuLinkColor}</declaration>
+    <declaration property="text-decoration">{f_menuLinkDecoration}</declaration>
+    <declaration property="background-color" browserInclude="not(ns4)">{f_menuLinkBGColor}</declaration>
+    <declaration property="display" browserInclude="not(ns4)">block</declaration>
+    <declaration property="width" browserInclude="ie">100%</declaration>
+    <declaration property="padding-left" browserInclude="not(ns4)">2px</declaration>
+    <declaration property="border-top" browserInclude="not(ns4)">{f_menuLinkBorderType} {f_menuLinkBorderWidth} {f_menuLinkBorderLight}</declaration>
+    <declaration property="border-left" browserInclude="not(ns4)">{f_menuLinkBorderType} {f_menuLinkBorderWidth} {f_menuLinkBorderLight}</declaration>
+    <declaration property="border-right" browserInclude="not(ns4)">{f_menuLinkBorderType} {f_menuLinkBorderWidth} {f_menuLinkBorderDark}</declaration>
+    <declaration property="border-bottom" browserInclude="not(ns4)">{f_menuLinkBorderType} {f_menuLinkBorderWidth} {f_menuLinkBorderDark}</declaration>
+  </style>
+  <style filterInclude="frontend">
+    <selector class="navlink" pseudoclass="visited">a</selector>
+    <declaration property="color">{f_menuLinkColor}</declaration>
+    <declaration property="text-decoration">{f_menuLinkDecoration}</declaration>
+    <declaration property="display" browserInclude="ie">block</declaration>
+    <declaration property="width" browserInclude="ie">100%</declaration>
+    <declaration property="padding-left" browserInclude="ie">2px</declaration>
+    <declaration property="background-color" browserInclude="ie">{f_menuLinkBGColor}</declaration>
+    <declaration property="border-top" browserInclude="ie">{f_menuLinkBorderType} {f_menuLinkBorderWidth} {f_menuLinkBorderLight}</declaration>
+    <declaration property="border-left" browserInclude="ie">{f_menuLinkBorderType} {f_menuLinkBorderWidth} {f_menuLinkBorderLight}</declaration>
+    <declaration property="border-right" browserInclude="ie">{f_menuLinkBorderType} {f_menuLinkBorderWidth} {f_menuLinkBorderDark}</declaration>
+    <declaration property="border-bottom" browserInclude="ie">{f_menuLinkBorderType} {f_menuLinkBorderWidth} {f_menuLinkBorderDark}</declaration>
+  </style>
+  <style filterInclude="frontend">
+    <selector class="navlink" pseudoclass="active">a</selector>
+    <declaration property="color">{f_menuLinkColor}</declaration>
+    <declaration property="text-decoration">{f_menuLinkDecoration}</declaration>
+  </style>
+  <style browserInclude="not(ns4)" filterInclude="frontend">
+    <selector class="navlink" pseudoclass="hover">a</selector>
+    <declaration property="color">{f_menuLinkHoverColor}</declaration>
+    <declaration property="text-decoration">{f_menuLinkHoverDecoration}</declaration>
+    <declaration property="border-top">{f_menuLinkBorderType} {f_menuLinkBorderWidth} {f_menuLinkBorderDark}</declaration>
+    <declaration property="border-right">{f_menuLinkBorderType} {f_menuLinkBorderWidth} {f_menuLinkBorderLight}</declaration>
+    <declaration property="border-bottom">{f_menuLinkBorderType} {f_menuLinkBorderWidth} {f_menuLinkBorderLight}</declaration>
+    <declaration property="border-left">{f_menuLinkBorderType} {f_menuLinkBorderWidth} {f_menuLinkBorderDark}</declaration>
+  </style>
+  <style filterInclude="admin">
+    <selector pseudoclass="link" class="headerLink1">a</selector>
+    <selector pseudoclass="visited" class="headerLink1">a</selector>
+    <selector pseudoclass="active" class="headerLink1">a</selector>
+    <selector pseudoclass="hover" class="headerLink1">a</selector>
+    <declaration property="color">{f_tableHeaderTextColor1}</declaration>
+  </style>
+  <style filterInclude="admin">
+    <selector pseudoclass="link" class="headerLink2">a</selector>
+    <selector pseudoclass="visited" class="headerLink2">a</selector>
+    <selector pseudoclass="active" class="headerLink2">a</selector>
+    <selector pseudoclass="hover" class="headerLink2">a</selector>
+    <declaration property="color">{f_tableHeaderTextColor2}</declaration>
+  </style>
+  <style filterInclude="admin">
+    <selector pseudoclass="link" class="headerLink3">a</selector>
+    <selector pseudoclass="visited" class="headerLink3">a</selector>
+    <selector pseudoclass="active" class="headerLink3">a</selector>
+    <selector pseudoclass="hover" class="headerLink3">a</selector>
+    <declaration property="color">{f_tableHeaderTextColor3}</declaration>
+  </style>
+  <style browserInclude="not(ns4)" filterInclude="admin">
+    <selector pseudoclass="hover" class="navigationArrow">a</selector>
+    <declaration property="background-color">#E9E9E9</declaration>
+  </style>
+  <style browserInclude="gecko" filterInclude="frontend admin">
+    <selector>textarea</selector>
+    <selector>input[type="text"]</selector>
+    <selector>input[type="password"]</selector>
+    <selector>input[type="checkbox"]</selector>
+    <selector>input[type="radio"]</selector>
+    <declaration property="background-color">{f_tableHeaderBGColor3}</declaration>
+    <declaration property="color">{f_tableHeaderTextColor3}</declaration>
+    <declaration property="border">1px inset #666666</declaration>
+    <declaration property="padding">1px 1px 0 1px</declaration>
+  </style>
+  <style browserInclude="gecko" filterInclude="frontend admin">
+    <selector pseudoclass="focus">textarea</selector>
+    <selector pseudoclass="focus">input[type="text"]</selector>
+    <selector pseudoclass="focus">input[type="password"]</selector>
+    <selector pseudoclass="focus">input[type="checkbox"]</selector>
+    <selector pseudoclass="focus">input[type="radio"]</selector>
+    <declaration property="background-color">{f_tableHeaderBGColor1}</declaration>
+    <declaration property="color">{f_tableHeaderTextColor1}</declaration>
+  </style>
+  <style browserInclude="gecko" filterInclude="frontend admin">
+    <selector>input[type="button"]</selector>
+    <selector>input[type="file"] > input[type="button"]</selector>
+    <selector>input[type="submit"]</selector>
+    <selector>input[type="reset"]</selector>
+    <declaration property="background">{f_tableHeaderBGColor1}</declaration>
+    <declaration property="color">{f_tableHeaderTextColor1}</declaration>
+    <declaration property="border-top">1px solid {f_tableHeaderBGColor3}</declaration>
+    <declaration property="border-left">1px solid {f_tableHeaderBGColor3}</declaration>
+    <declaration property="border-bottom">1px solid #000000</declaration>
+    <declaration property="border-right">1px solid #000000</declaration>
+    <declaration property="font-weight">700</declaration>
+    <declaration property="cursor">pointer</declaration>
+  </style>
+  <style browserInclude="gecko" filterInclude="frontend admin">
+    <selector pseudoclass="hover">input[type="button"]</selector>
+    <selector pseudoclass="hover">input[type="submit"]</selector>
+    <selector pseudoclass="hover">input[type="reset"]</selector>
+    <declaration property="background">{f_tableHeaderTextColor1}</declaration>
+    <declaration property="color">{f_tableHeaderBGColor1}</declaration>
+  </style>
+  <style browserInclude="gecko" filterInclude="frontend admin">
+    <selector>select</selector>
+    <declaration property="background-color">{f_tableHeaderBGColor3}</declaration>
+    <declaration property="color">{f_tableHeaderTextColor3}</declaration>
+    <declaration property="border">1px inset #666666</declaration>
+  </style>
+  <style browserInclude="gecko" filterInclude="frontend admin">
+    <selector pseudoclass="focus">select</selector>
+    <declaration property="background-color">{f_tableHeaderBGColor1}</declaration>
+    <declaration property="color">{f_tableHeaderTextColor1}</declaration>
+  </style>
+  <!-- not sure we need this one -->
+  <style filterInclude="frontend admin">
+    <selector>td</selector>
+    <declaration property="font-size">{f_fontSize}</declaration>
+    <declaration property="font-family">{f_fontFamily}</declaration>
+    <declaration property="color">{f_commonTextColor}</declaration>
+  </style>
+  <style browserInclude="ns4" filterInclude="frontend admin">
+  <!-- this is for stupid ns4 when it gets confused -->
+    <selector class="standardText">span</selector>
+    <declaration property="font-family">{f_fontFamily}</declaration>
+    <declaration property="color">{f_commonTextColor}</declaration>
+  </style>
+  <style filterInclude="admin">
+    <selector class="pagetitle">div</selector>
+    <declaration property="text-align">center</declaration>
+    <declaration property="font-family">{f_fontFamily}</declaration>
+    <declaration property="font-size">{f_h3fontSize}</declaration>
+    <declaration property="font-weight">700</declaration>
+    <declaration property="margin">0px 0px 5px 0px</declaration>
+    <declaration property="padding" browserInclude="not(ns4)">0px 2px 2px 2px</declaration>
+  </style>
+  <style filterInclude="frontend">
+    <selector class="pagetitle">div</selector>
+    <declaration property="text-align">center</declaration>
+    <declaration property="font-family">{f_fontFamily}</declaration>
+    <declaration property="font-size">{f_h1fontSize}</declaration>
+    <declaration property="font-weight">bold</declaration>
+    <declaration property="margin">15px 0px 15px 0px</declaration>
+    <declaration property="font-style">italic</declaration>
+  </style>
+  <style browserInclude="ns4" filterInclude="frontend">
+    <selector class="pagetitle">div</selector>
+    <declaration property="margin">0px 0px 0px 0px</declaration>
+  </style>
+  <style filterInclude="admin">
+    <selector class="list-box">div</selector>
+    <declaration property="font-family">{f_fontFamily}</declaration>
+    <declaration property="margin-left" browserInclude="not(ns4)">10px</declaration>
+  </style>
+  <style filterInclude="frontend admin">
+    <selector class="list-header">div</selector>
+    <declaration property="padding">3pt 0pt 3pt 0pt</declaration>
+    <declaration property="font-family">{f_fontFamily}</declaration>
+    <declaration property="font-weight">bold</declaration>
+    <declaration property="text-decoration" browserInclude="ns4">none</declaration>
+  </style>
+  <style filterInclude="frontend admin">
+    <selector class="list-element">div</selector>
+    <declaration property="margin" browserInclude="not(ns4)">7px 0px 0px 10px</declaration>
+    <declaration property="padding" browserInclude="not(ns4)">0px 0px 7px 15px</declaration>
+    <declaration property="padding" browserInclude="ns4">1px 0px 1px 15px</declaration>
+    <declaration property="background-image">{f_bulletImage}</declaration>
+    <declaration property="font-family">{f_fontFamily}</declaration>
+    <declaration property="text-decoration" browserInclude="ns4">none</declaration>
+    <declaration property="background-repeat">no-repeat</declaration>
+    <declaration property="background-position">left top</declaration>
+  </style>
+  <style filterInclude="frontend">
+    <selector class="list-element-numbered">div</selector>
+    <declaration property="margin" browserInclude="not(ns4)">0px 0px 0px 10px</declaration>
+    <declaration property="margin-left" browserInclude="ns4">13px</declaration>
+    <declaration property="padding">7px 0px 7px 15px</declaration>
+    <declaration property="text-decoration" browserInclude="ns4">none</declaration>
+    <declaration property="font-family">{f_fontFamily}</declaration>
+  </style>
+  <style filterInclude="frontend">
+    <selector class="index-block">div</selector>
+    <declaration property="padding-left">2%</declaration>
+    <declaration property="width" browserInclude="not(ns4)">96%</declaration>
+    <declaration property="font-family">{f_fontFamily}</declaration>
+  </style>
+  <style filterInclude="frontend">
+    <selector class="index-header">p</selector>
+    <declaration property="font-family">{f_fontFamily}</declaration>
+    <declaration property="font-weight">bold</declaration>
+    <declaration property="font-size">12px</declaration>
+    <declaration property="color">{f_menuHeaderColor}</declaration>
+    <declaration property="padding">0</declaration>
+    <declaration property="margin">0</declaration>
+    <declaration property="width">100%</declaration>
+  </style>
+  <style filterInclude="frontend">
+    <selector class="index-item">p</selector>
+    <declaration property="font-family">{f_fontFamily}</declaration>
+    <declaration property="font-size">10px</declaration>
+    <declaration property="padding">3px 0px 3px 0px</declaration>
+    <declaration property="margin">0px</declaration>
+    <declaration property="width">100%</declaration>
+  </style>
+  <style filterInclude="admin">
+    <selector>hr</selector>
+    <declaration property="width" browserInclude="not(ns4)">100%</declaration>
+    <declaration property="margin" browserInclude="gecko">-5px 0 -4px 0</declaration>
+    <declaration property="margin" browserInclude="not(gecko)">-2px 0 -2px 0</declaration>
+    <declaration property="background-color">{f_hrBarBGColor}</declaration>
+    <declaration property="height" browserInclude="not(ns4)">4px</declaration>
+    <declaration property="border" browserInclude="not(ns4)">1px solid #000000</declaration>
+  </style>
+  <style filterInclude="frontend">
+    <selector class="index-divider">hr</selector>
+    <declaration property="width" browserInclude="not(ns4)">100%</declaration>
+    <declaration property="margin" browserInclude="gecko">-5px 0 -4px 0</declaration>
+    <declaration property="margin" browserInclude="not(gecko)">-2px 0 -2px 0</declaration>
+    <declaration property="background-color">#000000</declaration>
+    <declaration property="border" browserInclude="not(ns4)">2px solid {f_menuHeaderColor}</declaration>
+  </style>
+  <style filterInclude="frontend">
+    <selector class="copyright">div</selector>
+    <declaration property="font-family">{f_fontFamily}</declaration>
+    <declaration property="color">{f_menuLinkColor}</declaration>
+    <declaration property="text-align">center</declaration>
+    <declaration property="width">100%</declaration>
+    <declaration property="font-size">10px</declaration>
+    <declaration property="font-style">italic</declaration>
+    <declaration property="margin-top">10px</declaration>
+  </style>
+  <style filterInclude="frontend">
+    <selector class="break">p</selector>
+    <declaration property="font-family">{f_fontFamily}</declaration>
+    <declaration property="page-break-after">always</declaration>
+  </style>
+  <style filterInclude="admin">
+    <selector class="firstletter" pseudoclass="first-letter">p</selector>
+    <declaration property="font-family">{f_fontFamily}</declaration>
+    <declaration property="font-size">{f_h2fontSize}</declaration>
+    <declaration property="color">{f_dropLetterColor}</declaration>
+    <declaration property="font-weight">bold</declaration>
+    <declaration property="padding">0px</declaration>
+    <declaration property="margin">0px</declaration>
+  </style>
+  <style filterInclude="frontend admin">
+    <selector class="contentCell"/>
+    <declaration property="background-color">{f_backgroundColor}</declaration>
+    <declaration property="color">{f_commonTextColor}</declaration>
+    <declaration property="font-family">{f_fontFamily}</declaration>
+  </style>
+  <style filterInclude="frontend admin">
+    <selector class="header"/>
+    <selector class="headerCell1"/>
+    <declaration property="font-family">{f_fontFamily}</declaration>
+    <declaration property="font-weight">bold</declaration>
+    <declaration property="color">{f_tableHeaderTextColor1}</declaration>
+    <declaration property="background-color">{f_tableHeaderBGColor1}</declaration>
+    <declaration property="text-align">center</declaration>
+  </style>
+  <style filterInclude="frontend admin">
+    <selector class="header2"/>
+    <selector class="headerCell2"/>
+    <declaration property="font-family">{f_fontFamily}</declaration>
+    <declaration property="font-weight">bold</declaration>
+    <declaration property="color">{f_tableHeaderTextColor2}</declaration>
+    <declaration property="background-color">{f_tableHeaderBGColor2}</declaration>
+    <declaration property="text-align">center</declaration>
+  </style>
+  <style filterInclude="frontend admin">
+    <selector class="header3"/>
+    <selector class="headerCell3"/>
+    <declaration property="font-family">{f_fontFamily}</declaration>
+    <declaration property="font-weight">bold</declaration>
+    <declaration property="color">{f_tableHeaderTextColor3}</declaration>
+    <declaration property="background-color">{f_tableHeaderBGColor3}</declaration>
+    <declaration property="text-align">center</declaration>
+  </style>
+  <!-- fix header2 and header3 to be left align to support old code -->
+  <style filterInclude="frontend admin">
+    <selector class="header2"/>
+    <declaration property="font-family">{f_fontFamily}</declaration>
+    <declaration property="text-align">left</declaration>
+  </style>
+  <style filterInclude="frontend admin">
+    <selector class="header3"/>
+    <declaration property="font-family">{f_fontFamily}</declaration>
+    <declaration property="text-align">left</declaration>
+  </style>
+  <!-- end fix -->
+  <style filterInclude="frontend admin">
+    <selector class="tableSettings"/>
+    <declaration property="background-color">{f_tableBGColor}</declaration>
+    <declaration property="font-family">{f_fontFamily}</declaration>
+  </style>
+  <style filterInclude="frontend admin">
+    <selector class="center"/>
+    <declaration property="text-align">center</declaration>
+  </style>
+  <style filterInclude="frontend admin">
+    <selector class="left"/>
+    <declaration property="text-align">left</declaration>
+  </style>
+  <style filterInclude="frontend admin">
+    <selector class="right"/>
+    <declaration property="text-align">right</declaration>
+  </style>
+  <style filterInclude="admin">
+    <selector class="menu"/>
+    <declaration property="font-size">{f_menuFontSize}</declaration>
+    <declaration property="font-family">{f_fontFamily}</declaration>
+    <declaration property="color">{f_commonTextColor}</declaration>
+    <declaration property="background-color">{f_tableHeaderBGColor3}</declaration>
+  </style>
+  <style filterInclude="admin">
+    <selector class="menutitle"/>
+    <declaration property="font-size">{f_menuFontSize}</declaration>
+    <declaration property="font-family">{f_fontFamily}</declaration>
+    <declaration property="background-color">{f_tableHeaderBGColor1}</declaration>
+    <declaration property="text-align">center</declaration>
+    <declaration property="white-space">nowrap</declaration>
+  </style>
+  <style filterInclude="admin">
+    <selector class="menuheader"/>
+    <declaration property="font-family">{f_fontFamily}</declaration>
+    <declaration property="color">{f_tableHeaderTextColor1}</declaration>
+    <declaration property="font-weight">bold</declaration>
+  </style>
+  <style browserInclude="not(ns4)" filterInclude="admin">
+    <selector class="menuborder">table</selector>
+    <declaration property="border">solid {f_menuBorderWidth} {f_menuBorderColor}</declaration> 
+  </style>
+  <style filterInclude="frontend admin">
+  <!-- This style is for use in a row when no results are returned -->
+    <selector class="none"/>
+    <declaration property="color">{f_commonTextColor}</declaration>
+    <declaration property="font-family">{f_fontFamily}</declaration>
+    <declaration property="font-style">oblique</declaration>
+    <declaration property="font-weight">bold</declaration>
+    <declaration property="text-align">center</declaration>
+  </style>
+  <style filterInclude="frontend admin">
+  <!-- what is this all about?  maybe we need span with error color? -->
+    <selector class="error"/>
+    <declaration property="font-family">{f_fontFamily}</declaration>
+    <declaration property="color">{f_errorTextColor}</declaration>
+  </style>
+  <style filterInclude="frontend admin">
+  <!-- This style has been deprecated -->
+    <selector class="error">p</selector>
+    <declaration property="font-family">{f_fontFamily}</declaration>
+    <declaration property="margin">5px 0px 5px 0px</declaration>
+    <declaration property="text-align">left</declaration>
+    <declaration property="width">80%</declaration>
+    <declaration property="border">1px solid {f_tableHeaderBGColor2}</declaration>
+    <declaration property="padding">2px</declaration>
+    <declaration property="font-weight">bold</declaration>
+    <declaration property="background-color">{f_tableBGColor}</declaration>
+  </style>
+  <style filterInclude="frontend">
+    <selector class="blankmessage">p</selector>
+    <declaration property="font-family">{f_fontFamily}</declaration>
+    <declaration property="height">20px</declaration>
+    <declaration property="margin">0</declaration>
+    <declaration property="padding">0</declaration>
+  </style>
+  <style filterInclude="admin">
+    <selector class="blankmessage">p</selector>
+    <declaration property="font-family">{f_fontFamily}</declaration>
+    <declaration property="margin" browserInclude="not(ns4)">5px 0px 5px 0px</declaration>
+    <declaration property="padding" browserInclude="not(ns4)">2px</declaration>
+    <declaration property="margin-bottom" browserInclude="ns4">0px</declaration>
+    <declaration property="padding" browserInclude="ns4">0px</declaration>
+    <declaration property="text-align">left</declaration>
+    <declaration property="width">99%</declaration>
+    <declaration property="border">{f_menuBorderWidth} solid {f_backgroundColor}</declaration>
+    <declaration property="border-color" browserInclude="gecko">transparent</declaration>
+    <declaration property="font-weight">700</declaration>
+  </style>
+  <style filterInclude="frontend admin">
+  <!-- This style is under tight scrutiny until we convert all p.error to p.message/blankmessage -->
+    <selector class="message">p</selector>
+    <selector class="message">table</selector>
+    <declaration property="font-family">{f_fontFamily}</declaration>
+    <declaration property="color">{f_errorTextColor}</declaration>
+    <declaration property="margin" browserInclude="not(ns4)">5px 0px 5px 0px</declaration>
+    <declaration property="padding" browserInclude="not(ns4)">2px</declaration>
+    <declaration property="margin-bottom" browserInclude="ns4">0px</declaration>
+    <declaration property="padding" browserInclude="ns4">0px</declaration>
+    <declaration property="text-align">left</declaration>
+    <declaration property="width">99%</declaration>
+    <declaration property="font-weight">700</declaration>
+    <!-- make these last two f_backgroundColor if in live area -->
+    <declaration property="border">{f_menuBorderWidth} solid {f_menuBorderColor}</declaration>
+    <declaration property="background-color">{f_tableBGColor}</declaration>
+  </style>
+  <style browserInclude="not(ns4)" filterInclude="frontend admin">
+    <selector>form</selector>
+    <declaration property="margin">0px</declaration>
+    <declaration property="padding">0px</declaration>
+  </style>
+  <style filterInclude="admin">
+  <!-- used in place of <hr/>, still experimental -->
+    <selector class="linebreak">div</selector>
+    <declaration property="border-top">1px solid {f_tableHeaderBGColor1}</declaration>
+  </style>
+  <style filterInclude="admin">
+    <selector id="help"/>
+    <declaration property="cursor">help</declaration>
+  </style>
+  <style filterInclude="admin">
+    <selector class="logoutbutton">div</selector>
+    <declaration property="font-family">{f_fontFamily}</declaration>
+    <declaration property="position" browserInclude="ie">absolute</declaration>
+    <declaration property="position" browserInclude="gecko">fixed</declaration>
+    <declaration property="z-index">2</declaration>
+    <declaration property="width" browserInclude="not(ns4)">100%</declaration>
+    <declaration property="margin">0</declaration>
+    <declaration property="padding">0</declaration>
+    <declaration property="right">0</declaration>
+    <declaration property="top">-1px</declaration>
+    <declaration property="text-align">right</declaration>
+    <declaration property="font-weight">bold</declaration>
+    <declaration property="font-style">italic</declaration>
+  </style>
+</cssml:CSSML>

@@ -1,0 +1,113 @@
+<?php
+session_start();
+
+/* Include files necessary for the Universal Plug-in */
+$homeDir = dirname(dirname(dirname(dirname(dirname(dirname(dirname(dirname(__FILE__))))))));
+require_once $homeDir . "/Universal/UniversalPluginXMLFileParser.php";
+require_once $homeDir . "/Universal/Framework.php";
+
+/* Set some variables */
+$currencySymbol = Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())->getSymbol();
+
+/* Load the order */
+$order = new Mage_Sales_Model_Order();
+$orderId = Mage::getSingleton('checkout/session')->getLastRealOrderId();
+$order->loadByIncrementId($orderId);
+
+/* Load the items and their attributes */
+$items = $order->getAllItems();
+$name=array();
+$unitPrice=array();
+$sku=array();
+$ids=array();
+$qty=array();
+foreach ($items as $itemId => $item)
+{
+   $name[] = $item->getName();
+   $unitPrice[]=$item->getPrice();
+   $sku[]=$item->getSku();
+   $ids[]=$item->getProductId();
+   $qty[]=$item->getQtyToInvoice();
+}
+$shippingAddressItems = $order->getShippingAddress()->getData();
+
+$shippingItemCount = 0;
+foreach ($shippingAddressItems as $item){
+    if($shippingItemCount>6 && $shippingItemCount<12 && $item!='' && $shippingItemCount!=9){
+        if($shippingItemCount == 11){
+            $addressPart['0'] = $item . ' ';
+        }
+        else if($shippingItemCount == 8){
+            $addressPart['1'] = $item . ', ';
+        }
+        else if($shippingItemCount == 7){
+            $addressPart['2'] = $item . ', ';
+        }
+        else if($shippingItemCount == 10){
+            $addressPart['3'] = $item;
+        }
+    }
+    $shippingItemCount++;
+}
+$shippingAddress = base64_encode($addressPart['0'] . $addressPart['1'] . $addressPart['2'] . $addressPart['3']);
+$shippingAmount = base64_encode(number_format($order->getShippingAmount(),2,'.','') . ' ' . $currencySymbol);
+$totalDescriptive = base64_encode(number_format($order->getGrandTotal(),2,'.','') . ' ' . $currencySymbol);
+$VAT = base64_encode(number_format($order->getTaxAmount(),2,'.','') . ' ' . $currencySymbol);
+?>
+
+<form name="transactionForm" action="../../../../../../../UbbConfiguration/UbbInit.php" method="POST">
+    <?php /* Transaction Configuration */  ?>
+    <input type="hidden" name="TranType" value="<?php echo $tranType ?>"/>
+    <input type="hidden" name="TerminalAlias" value="<?php echo $terminalAlias?>"/>
+    <input type="hidden" name="ResourcePath" value="<?php echo $resourcePath ?>"/>
+    
+    <?php /* Order Information */ ?>
+    <input type="hidden" name="orderId" value="<?php echo $orderId; ?>"/>
+    <input type="hidden" name="grandTotal" value="<?php echo number_format($order->getGrandTotal(),2,'.',''); ?>"/>
+    <input type="hidden" name="totalDescriptive" value="<?php echo $totalDescriptive; ?>"/>
+    <input type="hidden" name="VAT" value="<?php echo $VAT; ?>"/>
+    
+    <?php /* Shipping Details */ ?>
+    <input type="hidden" name="shippingTitle" value="<?php echo $order->getShippingDescription(); ?>"/>
+    <input type="hidden" name="shippingAmount" value="<?php echo $shippingAmount; ?>"/>
+    <input type="hidden" name="shippingAddress" value="<?php echo $shippingAddress; ?>"/>
+    
+    <?php /* Merchant Information */ ?>
+    <input type="hidden" name="logo" value="<?php echo Mage::getStoreConfig('payment/ubb/logo'); ?>"/>
+    <input type="hidden" name="merchantName" value="<?php echo Mage::getStoreConfig('payment/ubb/merchant_name'); ?>"/>
+    <input type="hidden" name="internetAddress" value="<?php echo Mage::getStoreConfig('payment/ubb/internet_address'); ?>"/>
+    
+    <?php /* Customer Information */ ?>
+    <input type="hidden" name="customerName" value="<?php echo $order->getCustomerName(); ?>"/>
+    
+    <?php /* Additional Information */ ?>
+    <input type="hidden" name="localeCode" value="<?php echo Mage::app()->getLocale()->getLocaleCode(); ?>"/>
+    <input type="hidden" name="currencyName" value="<?php echo Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())->getName(); ?>"/>
+    <input type="hidden" name="currencyCode" value="<?php echo Mage::app()->getStore()->getCurrentCurrencyCode(); ?>"/>
+    <input type="hidden" name="transactionDate" value="<?php echo $order->getCreatedAtDate(); ?>"/>
+    
+    <?php /* Generate attributes inputs for all the items */ ?>
+    <?php /* Start */ ?>
+    <?php foreach($name as $n): ?>
+    <input type="hidden" name="name[]" value="<?php echo $n; ?>"/>
+    <?php endforeach; ?>
+    <?php foreach($sku as $s): ?>
+    <input type="hidden" name="sku[]" value="<?php echo $s; ?>"/>
+    <?php endforeach; ?>
+    <?php $qtyPos = 0; ?>
+    <?php foreach($unitPrice as $u): ?>
+    <input type="hidden" name="unitTotalPrice[]" value="<?php echo base64_encode(number_format($u*$qty[$qtyPos],2,'.','') . ' ' . $currencySymbol); ?>"/>
+    <input type="hidden" name="unitPriceDesc[]" value="<?php echo base64_encode(number_format($u,2,'.','') . ' ' . $currencySymbol); ?>"/>
+    <?php $qtyPos++; ?>
+    <?php endforeach; ?>
+    <?php foreach($qty as $q): ?>
+    <input type="hidden" name="qty[]" value="<?php echo $q; ?>"/>
+    <?php endforeach; ?>
+    <?php /* End */  ?>
+    
+    <?php /* Submit the form */  ?>
+    <input type="submit" style="display: none;" name="proceed" value="Proceed to Checkout"/>
+</form>
+<script type="text/javascript">
+document.transactionForm.submit();
+</script>
