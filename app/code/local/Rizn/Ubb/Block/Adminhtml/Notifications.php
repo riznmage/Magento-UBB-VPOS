@@ -65,7 +65,7 @@ class Rizn_Ubb_Block_Adminhtml_Notifications extends Mage_Adminhtml_Block_Templa
      * @return boolean
      */
     public function showNotif(){
-        if(!$_COOKIE['RZ_HIDE_NOTIF']){
+        if(!isset($_COOKIE['RZ_HIDE_NOTIF'])){
             setcookie('RZ_HIDE_NOTIF', 'yes', time()+2592000, '/');
             return true;
         }
@@ -146,38 +146,41 @@ class Rizn_Ubb_Block_Adminhtml_Notifications extends Mage_Adminhtml_Block_Templa
         $getNews = $xmlObj->feed->$type;
         $allNews = get_object_vars($getNews);
         
-        $_t = 0;
-        foreach($allNews as $key => $value){
-            $theNews[$_t++] = substr($key,1);
-        }
-        
-        $currentTime = time();
         $gatheredNews = array();
-        $locale = Mage::app()->getLocale()->getLocaleCode()=='bg_BG' ? 'bg_BG' : 'en_US';
-        
-        $newsCounter = 0;
-        foreach($theNews as $news){
-            
-            $toBeCalled = 't' . $news;
-            
-            if(!is_file($_SERVER['DOCUMENT_ROOT'] . $this->rzDir . $type . '-' . $news . '.txt')){
-                $fp = fopen($_SERVER['DOCUMENT_ROOT'] . $this->rzDir . $type . '-' . $news . '.txt','wb');
-                fwrite($fp,$currentTime);
-                fclose($fp);
+
+        if (count($allNews) > 0) {
+            $_t = 0;
+            foreach ($allNews as $key => $value) {
+                $theNews[$_t++] = substr($key, 1);
             }
-            
-            $fp = fopen($_SERVER['DOCUMENT_ROOT'] . $this->rzDir . $type . '-' . $news . '.txt','rb');
-            $tempTimestamp = fread($fp, filesize($_SERVER['DOCUMENT_ROOT'] . $this->rzDir . $type . '-' . $news . '.txt'));
-            fclose($fp);
-            $newsTimestamp=(int)$tempTimestamp;
-            
-            if($newsTimestamp>=$currentTime-3600 || $getNews->$toBeCalled->permanent == 1){
-                $newsXMLObject = $getNews->$toBeCalled->$locale;
-                
-                $gatheredNews[$newsCounter]['title'] = $newsXMLObject->title;
-                $gatheredNews[$newsCounter]['msg'] = $newsXMLObject->msg;
-                
-                $newsCounter++;
+
+            $currentTime = time();
+            $locale = Mage::app()->getLocale()->getLocaleCode() == 'bg_BG' ? 'bg_BG' : 'en_US';
+
+            $newsCounter = 0;
+            foreach ($theNews as $news) {
+
+                $toBeCalled = 't' . $news;
+
+                if (!is_file($_SERVER['DOCUMENT_ROOT'] . $this->rzDir . $type . '-' . $news . '.txt')) {
+                    $fp = fopen($_SERVER['DOCUMENT_ROOT'] . $this->rzDir . $type . '-' . $news . '.txt', 'wb');
+                    fwrite($fp, $currentTime);
+                    fclose($fp);
+                }
+
+                $fp = fopen($_SERVER['DOCUMENT_ROOT'] . $this->rzDir . $type . '-' . $news . '.txt', 'rb');
+                $tempTimestamp = fread($fp, filesize($_SERVER['DOCUMENT_ROOT'] . $this->rzDir . $type . '-' . $news . '.txt'));
+                fclose($fp);
+                $newsTimestamp = (int) $tempTimestamp;
+
+                if ($newsTimestamp >= $currentTime - 3600 || $getNews->$toBeCalled->permanent == 1) {
+                    $newsXMLObject = $getNews->$toBeCalled->$locale;
+
+                    $gatheredNews[$newsCounter]['title'] = $newsXMLObject->title;
+                    $gatheredNews[$newsCounter]['msg'] = $newsXMLObject->msg;
+
+                    $newsCounter++;
+                }
             }
         }
         
