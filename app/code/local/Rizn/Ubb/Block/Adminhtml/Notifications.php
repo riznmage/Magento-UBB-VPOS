@@ -3,7 +3,7 @@
 class Rizn_Ubb_Block_Adminhtml_Notifications extends Mage_Adminhtml_Block_Template
 {
     private $authorName = 'RIZN'; // The author
-    private $authorWebSite = 'http://www.rizn.bg'; // The author's web site
+    public $authorWebSite = 'http://www.rizn.bg'; // The author's web site
     private $authorMail = 'info@rizn.bg'; // The author's email
     private $rzUbbVer = '1.1.1'; // Your version of the module
     private $rzDir = '/var/rz-ubb-vpos/'; // Directory, used to store information about the module
