@@ -60,9 +60,9 @@
   <adminhtml>
       <layout>
           <updates>
-              <index>
+              <dashboard>
                   <file>rizn/ubb.xml</file>
-              </index>
+              </dashboard>
           </updates>
       </layout>
     <translate>
