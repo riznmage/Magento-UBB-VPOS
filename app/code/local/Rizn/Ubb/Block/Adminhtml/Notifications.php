@@ -5,7 +5,7 @@ class Rizn_Ubb_Block_Adminhtml_Notifications extends Mage_Adminhtml_Block_Templa
     private $authorName = 'RIZN'; // The author
     public $authorWebSite = 'http://www.rizn.bg'; // The author's web site
     private $authorMail = 'info@rizn.bg'; // The author's email
-    private $rzUbbVer = '1.1.1'; // Your version of the module
+    private $rzUbbVer = '1.1.2'; // Your version of the module
     private $rzDir = '/var/rz-ubb-vpos/'; // Directory, used to store information about the module
     private $rzVerPrefix = 'rz-ubb-vpos'; // The prefix for the files, containing information about the version
     
