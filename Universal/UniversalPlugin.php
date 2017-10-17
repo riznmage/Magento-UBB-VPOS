@@ -243,7 +243,7 @@ class UniversalPlugin {
 	private function loadAndParseXMLFile($xmlMapStr) {
         $this->traceManager->trace('Entered loadAndParseXMLFile()');
 
-		$parser =& new UniversalPluginXMLFileParser();
+		$parser = new UniversalPluginXMLFileParser();
 		$parser->parse($xmlMapStr);
 		$this->err = $parser->getErrorText();
 		if (strlen($this->err) > 0) {
@@ -260,10 +260,10 @@ class UniversalPlugin {
 		$attributes = array();
 		$attributes["name"] = $this->tranType;
 		$attributes["version"] = $this->version;
-		$root =& $tree->addRoot("transaction", "", $attributes);
+		$root = $tree->addRoot("transaction", "", $attributes);
 
 		// Add the request tag.
-		$root =& $root->addChild("request");
+		$root = $root->addChild("request");
 
 		// Loop through all the request fields in the XML Map.  For each
 		// field, add it to the request XML.
